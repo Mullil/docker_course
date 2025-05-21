@@ -6,3 +6,12 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     container_name: watchtower
+    command: --label-enable
+
+  app:
+    image: mullil/docker_course:latest
+    restart: always
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - 8080:8080
